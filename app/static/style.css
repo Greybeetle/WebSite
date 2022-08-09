@@ -1,0 +1,26 @@
+.register_form{
+    width: 20%;
+    text-align: center;
+    margin-top: 10%;
+    border: brown;
+}
+
+.login_form{
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 10%;
+    border: brown;
+}
+
+.post_form{
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 20px;
+    border: brown;
+}
+
+.markdown_css{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2%;
+}

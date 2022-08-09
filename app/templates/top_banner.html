@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{{url_for('blog.index')}}">
+            <img src="{{url_for('static',filename='imgs/luffy.jpg')}}" alt="" width="40" height="40">
+            {% if site_name %}
+            {{ site_name }}
+            {% else %}
+            WebSite
+            {% endif %}
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 导航栏菜单设置 -->
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">首页<span class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/showall">文章列表</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">发表文章</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://hexo.hanxuan.site">我的博客</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">关于</a>
+                </li>
+                <!-- 下拉菜单 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">其他</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">用户管理</a>
+                        <a class="dropdown-item" href="#">其他链接</a>
+                    </div>
+                </li>
+
+                <!-- 搜索功能 -->
+                <li class="nav-item">
+                    <form class="d-flex">
+                        <input class="form-control me-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav d-flex">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-plus-circle"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-chat-text"></i></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">{{ current_user.username }}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{url_for('blog.add')}}"><i
+                                class="bi bi-plus-lg"></i>&nbsp;文章发布</a>
+                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i>&nbsp;个人中心</a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{url_for('auth.logout')}}">退出</a>
+                    </div>
+                </li>
+                {%else%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('auth.register')}}">注册</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('auth.login')}}">登录</a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</nav>
